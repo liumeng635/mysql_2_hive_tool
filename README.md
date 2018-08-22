@@ -9,7 +9,7 @@
 # 使用：
 - 如果是开发环境，修改application-dev.yml配置为自己的环境
 - 如果是生产环境，修改application-prod.yml配置为生产环境
-
+```
     quartz:
     scheduler: 
         cron: 
@@ -67,4 +67,4 @@
     to_mail_account: liumeng@test.com
     from_personal: 大数据同步平台
     to_personal: 尊敬的工程师
-    
+```
