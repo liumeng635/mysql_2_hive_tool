@@ -9,6 +9,7 @@
 # 使用：
 - 如果是开发环境，修改application-dev.yml配置为自己的环境
 - 如果是生产环境，修改application-prod.yml配置为生产环境
+- 需使用maven环境编译 进入项目根目录 mven clean package上传jar文件到服务器，java -jar启动即可
 ```
     quartz:
     scheduler: 
