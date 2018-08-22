@@ -1,23 +1,23 @@
 # mysql_2_hive_tool
-简介：
-  本工具功能是将mysql数据同步到hive上，支持datax和sqoop。使用spring-boot框架编写，同步库中所有表，可以部署在不局限hadoop服务器上的任何一台可与之通   讯的机器。
-  支持增量同步和更新同步，
-    增量同步机制：根据自增主键增量同步，如果主键非自增主键，则每次先删除hive对应表记录，然后全量同步。
-    更新数据同步：表中含有update_time字段的才会去更新同步。
-  使用datax需要远程hive服务器安装datax
-  使用sqoop需要远程hive服务器安装sqoop
-使用：
-如果是开发环境，修改application-dev.yml配置为自己的环境
-如果是生产环境，修改application-prod.yml配置为生产环境
+## 简介：
+  - 本工具功能是将mysql数据同步到hive上，支持datax和sqoop。使用spring-boot框架编写，同步库中所有表，可以部署在不局限hadoop服务器上的任何一台可与之通   讯的机器。
+  - 支持增量同步和更新同步，
+    - 增量同步机制：根据自增主键增量同步，如果主键非自增主键，则每次先删除hive对应表记录，然后全量同步。
+    - 更新数据同步：表中含有update_time字段的才会去更新同步。
+  - 使用datax需要远程hive服务器安装datax
+  - 使用sqoop需要远程hive服务器安装sqoop
+# 使用：
+- 如果是开发环境，修改application-dev.yml配置为自己的环境
+- 如果是生产环境，修改application-prod.yml配置为生产环境
 
-quartz:
+    quartz:
     scheduler: 
         cron: 
           ###增量同步定时器
           increase: 0 0 0/1 * * ?
           ###更新同步定时器
           update: 0 0 0/1 * * ?
-config: 
+    config: 
     #######同步工具(可选datax和sqoop)
     sync_tool: datax
     #######安装hive的linux服务器信息
