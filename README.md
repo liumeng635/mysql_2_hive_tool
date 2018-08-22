@@ -1,4 +1,4 @@
-# mysql_2_hive_too
+# mysql_2_hive_tool
 简介：
   本工具功能是将mysql数据同步到hive上，支持datax和sqoop。使用spring-boot框架编写，同步库中所有表，可以部署在不局限hadoop服务器上的任何一台可与之通   讯的机器。
   支持增量同步和更新同步，
@@ -9,6 +9,7 @@
 使用：
 如果是开发环境，修改application-dev.yml配置为自己的环境
 如果是生产环境，修改application-prod.yml配置为生产环境
+
 quartz:
     scheduler: 
         cron: 
@@ -23,7 +24,6 @@ config:
     remote_ssh_ip: 127.0.0.1
     remote_ssh_user: root
     remote_ssh_pwd: xcs@!#$DSFDF125
-    
     #######datax JSON文件本地路径
     datax_local_path: D:/datax_config ###程序生成的datax json临时文件（如果使用sqoop此项可不配置）
     datax_job_dir: /root/datax/job ###远程hive服务器上存储datax执行同步的json配置文件的位置（如果使用sqoop此项可不配置）
