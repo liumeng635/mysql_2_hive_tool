@@ -17,7 +17,6 @@ import com.sync.liumeng.transData.handler.UpdateFactory;
 @Component
 @Configurable
 @EnableScheduling
-@EnableAsync
 public class SyncQuartz {
 	private static final Logger LOGGER =  LoggerFactory.getLogger(SyncQuartz.class);
 	
