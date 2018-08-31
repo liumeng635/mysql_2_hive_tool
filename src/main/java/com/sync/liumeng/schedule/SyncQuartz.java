@@ -25,7 +25,7 @@ public class SyncQuartz {
   	@Scheduled(cron = "${quartz.scheduler.cron.increase}")
     public void work() throws Exception {
   		LOGGER.info("增量同步任务开始");
-  		IncreaseFactory syncTool = SyncIncreaseFactory.createSyncEngine();
+  		/*IncreaseFactory syncTool = SyncIncreaseFactory.createSyncEngine();
     	try {
     		LOGGER.info("开始执行");
     		syncTool.addSynMysql2Hive(SCHEMA);
@@ -37,14 +37,14 @@ public class SyncQuartz {
 //			MysqlJdbc.getInstance().releaseConn();
 //			HiveJdbc.getInstance().releaseConn();
 //			RemoteShellTool.getInstance().releaseConn();
-		}
+		}*/
     }
   	
 	@Async
 	@Scheduled(cron = "${quartz.scheduler.cron.update}")
     public void work1() throws Exception { 
   		LOGGER.info("更新数据同步任务开始");
-  		UpdateFactory syncTool = SyncUpdateFactory.createSyncEngine();
+  		/*UpdateFactory syncTool = SyncUpdateFactory.createSyncEngine();
     	try {
     		LOGGER.info("开始执行");
     		syncTool.addSynUpdateDataMysql2Hive(SCHEMA);
@@ -56,6 +56,6 @@ public class SyncQuartz {
 //			MysqlJdbc.getInstance().releaseConn();
 //			HiveJdbc.getInstance().releaseConn();
 //			RemoteShellTool.getInstance().releaseConn();
-		}
+		}*/
     }
 }

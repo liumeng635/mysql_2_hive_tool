@@ -1,5 +1,7 @@
 package com.sync.liumeng.config;
 
+import java.io.File;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -76,9 +78,9 @@ public class MonitorConfig {
 	// 定义访问数据库的地址
 	public static String MYSQL_SYNC_URL;
 
-	public static String DATAX_JSON_TEMPLATE;
+	public static String DATAX_JSON_TEMPLATE = "datax_cfg_template.json";
 
-	public static String DATAX_LOCAL_PATH;
+	public static String DATAX_LOCAL_PATH = System.getProperty("user.dir")+File.separator+"datax_job_temp";
 
 	public static String DATAX_JOB_DIR;
 	
@@ -211,15 +213,6 @@ public class MonitorConfig {
 		MYSQL_SYNC_URL = mYSQL_SYNC_URL;
 	}
 
-	@Value("${config.datax_json_template}")
-	public void setDATAX_JSON_TEMPLATE(String dATAX_JSON_TEMPLATE) {
-		DATAX_JSON_TEMPLATE = dATAX_JSON_TEMPLATE;
-	}
-
-	@Value("${config.datax_local_path}")
-	public void setDATAX_LOCAL_PATH(String dATAX_LOCAL_PATH) {
-		DATAX_LOCAL_PATH = dATAX_LOCAL_PATH;
-	}
 
 	@Value("${config.datax_job_dir}")
 	public void setDATAX_JOB_DIR(String dATAX_JOB_DIR) {
@@ -236,7 +229,9 @@ public class MonitorConfig {
 		SYNC_TOOL = sYNC_TOOL;
 	}
 	
-	
+	public static void main(String[] args) {
+		System.out.println(System.getProperty("user.dir"));
+	}
 	
 	
 

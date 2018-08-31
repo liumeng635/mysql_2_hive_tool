@@ -24,6 +24,7 @@ import com.sync.liumeng.transData.handler.UpdateFactory;
 import com.sync.liumeng.transData.jdbc.HiveJdbc;
 import com.sync.liumeng.transData.jdbc.MysqlJdbc;
 import com.sync.liumeng.transData.jdbc.SyncInfoJdbc;
+import com.sync.liumeng.util.ReadConfUtil;
 
 @Component
 public class DataxMysql2HiveUpdate extends SyncHandler implements UpdateFactory{
@@ -60,7 +61,7 @@ public class DataxMysql2HiveUpdate extends SyncHandler implements UpdateFactory{
 			FileUtils.forceMkdir(dieF);
 		}
 		List<Map<String,Object>> rsList = new ArrayList<>();
-		String temStr = FileUtils.readFileToString(new File(DATAX_JSON_TEMPLATE), "UTF-8");
+		String temStr = ReadConfUtil.loadConf2String(DATAX_JSON_TEMPLATE);
 		MysqlJdbc dbUtil = MysqlJdbc.getInstance();
 		HiveJdbc jdbc = HiveJdbc.getInstance();
 		Map<String, List<Map<String,Object>>> rsMap = dbUtil.descTableStruct(tableName);
@@ -125,9 +126,9 @@ public class DataxMysql2HiveUpdate extends SyncHandler implements UpdateFactory{
 		String nowTime = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss");
 		//增量同步
 		try {
-			jsonFiles = DataxMysql2HiveUpdate.generateTableDataxJsonCfg(DATAX_JSON_TEMPLATE, schema,tabName,syncInfo,nowTime,SyncCommUtil.getNowDayAndHour());
-			if(!new File(DATAX_JSON_TEMPLATE).exists()){
-				FileUtils.forceMkdir(new File(DATAX_JSON_TEMPLATE));
+			jsonFiles = DataxMysql2HiveUpdate.generateTableDataxJsonCfg(DATAX_LOCAL_PATH, schema,tabName,syncInfo,nowTime,SyncCommUtil.getNowDayAndHour());
+			if(!new File(DATAX_LOCAL_PATH).exists()){
+				FileUtils.forceMkdir(new File(DATAX_LOCAL_PATH));
 			}
 		} catch (IOException e) {
 			log.error(e);

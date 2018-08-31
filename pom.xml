@@ -195,6 +195,14 @@
 		    <version>1.4</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>jdk.tools</groupId>
+			<artifactId>jdk.tools</artifactId>
+			<version>${java.version}</version>
+			<scope>system</scope>
+			<systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
+		</dependency>
+		
 </dependencies>
 
 <build>

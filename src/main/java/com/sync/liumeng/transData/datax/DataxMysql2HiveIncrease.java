@@ -23,6 +23,7 @@ import com.sync.liumeng.transData.handler.SyncHandler;
 import com.sync.liumeng.transData.jdbc.HiveJdbc;
 import com.sync.liumeng.transData.jdbc.MysqlJdbc;
 import com.sync.liumeng.transData.jdbc.SyncInfoJdbc;
+import com.sync.liumeng.util.ReadConfUtil;
 
 @Component
 public class DataxMysql2HiveIncrease extends SyncHandler implements IncreaseFactory{
@@ -59,7 +60,7 @@ public class DataxMysql2HiveIncrease extends SyncHandler implements IncreaseFact
 			FileUtils.forceMkdir(dieF);
 		}
 		List<Map<String,Object>> rsList = new ArrayList<>();
-		String temStr = FileUtils.readFileToString(new File(DATAX_JSON_TEMPLATE), "UTF-8");
+		String temStr = ReadConfUtil.loadConf2String(DATAX_JSON_TEMPLATE);
 		MysqlJdbc dbUtil = MysqlJdbc.getInstance();
 		HiveJdbc jdbc = HiveJdbc.getInstance();
 		Map<String, List<Map<String,Object>>> rsMap = dbUtil.descTableTableStruct();
@@ -119,7 +120,7 @@ public class DataxMysql2HiveIncrease extends SyncHandler implements IncreaseFact
 			FileUtils.forceMkdir(dieF);
 		}
 		List<Map<String,Object>> rsList = new ArrayList<>();
-		String temStr = FileUtils.readFileToString(new File(DATAX_JSON_TEMPLATE), "UTF-8");
+		String temStr = ReadConfUtil.loadConf2String(DATAX_JSON_TEMPLATE);
 		MysqlJdbc dbUtil = MysqlJdbc.getInstance();
 		Map<String, List<Map<String,Object>>> rsMap = dbUtil.descTableStruct(tableName);
 		try {
@@ -178,7 +179,7 @@ public class DataxMysql2HiveIncrease extends SyncHandler implements IncreaseFact
 			FileUtils.forceMkdir(dieF);
 		}
 		List<Map<String,Object>> rsList = new ArrayList<>();
-		String temStr = FileUtils.readFileToString(new File(DATAX_JSON_TEMPLATE), "UTF-8");
+		String temStr = ReadConfUtil.loadConf2String(DATAX_JSON_TEMPLATE);
 		MysqlJdbc dbUtil = MysqlJdbc.getInstance();
 		HiveJdbc jdbc = HiveJdbc.getInstance();
 		Map<String, List<Map<String,Object>>> rsMap = dbUtil.descTableStruct(tableName);
